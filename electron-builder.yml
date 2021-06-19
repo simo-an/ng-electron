@@ -1,0 +1,60 @@
+appId: 'github.com/simu/NgElectron'
+artifactName: ${name}-${version}-${os}-${arch}${env.ARTIFACT_NAME_POSTFIX}.${ext}
+productName: 'NgElectron'
+publish: {provider: github, releaseType: draft, vPrefixedTagName: true}
+forceCodeSigning: false
+
+directories:
+  output: ./release
+files:
+  - '**/*'
+  - '!**/*.ts'
+  - '!**/*.map'
+  - '!node_modules/rxjs/{_esm5,_esm2015,src,bundles}'
+compression: normal
+asar: false
+
+mac:
+  icon: ./src/assets/icons
+  category: public.app-category.productivity
+  darkModeSupport: true
+  target:
+    - {target: dmg}
+
+dmg:
+  icon: ./src/assets/icons
+  iconSize: 128
+  contents:
+    - {x: 380, y: 240, type: link, path: /Applications}
+    - {x: 122, y: 240, type: file}
+
+linux:
+  icon: ./src/assets/icons/favicon.png
+  category: Office
+  packageCategory: Office
+  desktop:
+    StartupWMClass: electron-mail
+  executableArgs:
+    - '--js-flags="--max-old-space-size=12288"'
+
+snap:
+  confinement: strict
+  stagePackages:
+    - default
+  plugs:
+    - default
+    - password-manager-service
+  environment:
+    DISABLE_WAYLAND: 1
+    HUNSPELL_DICTIONARIES: $SNAP/usr/share/hunspell
+
+win:
+  artifactName: ${name}-${version}-windows-${arch}.${ext}
+  icon: ./src/assets/icons/favicon.ico
+  target:
+    - {target: nsis}
+
+nsis:
+  artifactName: ${name}-${version}-windows-${arch}-nsis-installer.${ext}
+  oneClick: false
+  perMachine: false

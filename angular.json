@@ -19,7 +19,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-electron",
+            "outputPath": "dist/electron-renderer",
             "index": "src/electron-renderer/index.html",
             "main": "src/electron-renderer/main.ts",
             "polyfills": "src/electron-renderer/polyfills.ts",

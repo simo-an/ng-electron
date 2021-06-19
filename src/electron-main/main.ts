@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -33,7 +33,7 @@ function createWindow(): BrowserWindow {
 
   } else {
     win.loadURL(url.format({
-      pathname: path.join(__dirname, '../../dist/index.html'),
+      pathname: path.join(__dirname, '/../../dist/electron-renderer/index.html'),
       protocol: 'file:',
       slashes: true
     })).then();
