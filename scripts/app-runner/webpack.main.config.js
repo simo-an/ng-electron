@@ -15,7 +15,7 @@ let mainConfig = {
   output: {
     filename: '[name].js',// 生成的filename需要与package.json中的main一致
     path: path.resolve(__dirname, '../../dist/electron-main'),
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'commonjs',
   },
   module: {
     rules: [
