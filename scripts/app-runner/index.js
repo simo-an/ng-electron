@@ -1,6 +1,5 @@
 'use strict'
 
-const chalk = require('chalk')
 const electron = require('electron')
 const path = require('path')
 const { spawn } = require('child_process')
@@ -8,8 +7,8 @@ const webpack = require('webpack')
 const NgCli = require("@angular/cli");
 const WaitOn = require("wait-on");
 const { greeting, logStats, rendererLog, mainLog, electronLog } = require('./logger');
-const WebpackDevServer = require('webpack-dev-server')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+// const WebpackDevServer = require('webpack-dev-server')
+// const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const mainConfig = require('./webpack.main.config')
 
