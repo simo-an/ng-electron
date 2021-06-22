@@ -1,5 +1,5 @@
 appId: 'github.com/simu/NgElectron'
-artifactName: ${name}-${version}-${os}-${arch}${env.ARTIFACT_NAME_POSTFIX}.${ext}
+artifactName: ${name}-${version}-${os}-${arch}.${ext}
 productName: 'NgElectron'
 publish: {provider: github, releaseType: draft, vPrefixedTagName: true}
 forceCodeSigning: false
