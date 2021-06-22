@@ -34,7 +34,7 @@ linux:
   category: Office
   packageCategory: Office
   desktop:
-    StartupWMClass: electron-mail
+    StartupWMClass: ng-electron
   executableArgs:
     - '--js-flags="--max-old-space-size=12288"'
 
