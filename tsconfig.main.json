@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/electron-main",
     "sourceMap": true,
     "declaration": false,

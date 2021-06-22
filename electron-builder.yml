@@ -9,7 +9,8 @@ directories:
 files:
   - '**/*'
   - '!**/*.ts'
-  - '!**/*.map'
+  - '!scripts'
+  - '!src'
   - '!node_modules/rxjs/{_esm5,_esm2015,src,bundles}'
 compression: normal
 asar: false

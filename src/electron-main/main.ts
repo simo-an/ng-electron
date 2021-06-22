@@ -2,12 +2,9 @@ import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
-// Initialize remote module
-require('@electron/remote/main').initialize();
-
 let win: BrowserWindow = null;
-const args = process.argv.slice(1),
-  serve = args.some(val => val === '--serve');
+
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 function createWindow(): BrowserWindow {
   win = new BrowserWindow({
@@ -16,28 +13,18 @@ function createWindow(): BrowserWindow {
     height: 550,
     webPreferences: {
       nodeIntegration: true,
-      allowRunningInsecureContent: (serve) ? true : false,
+      allowRunningInsecureContent: isDevelopment,
       contextIsolation: false,  // false if you want to run 2e2 test with Spectron
       enableRemoteModule : true // true if you want to run 2e2 test  with Spectron or use remote module in renderer context (ie. Angular)
     },
   });
 
-  if (serve) {
+  const winURL = isDevelopment
+    ? 'http://localhost:4200'
+    : `file://${path.join(__dirname, '/../electron-renderer/index.html')}`;
+  if (isDevelopment) win.webContents.openDevTools();
 
-    win.webContents.openDevTools();
-
-    require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/../../node_modules/electron`)
-    });
-    win.loadURL('http://localhost:4200').then();
-
-  } else {
-    win.loadURL(url.format({
-      pathname: path.join(__dirname, '/../../dist/electron-renderer/index.html'),
-      protocol: 'file:',
-      slashes: true
-    })).then();
-  }
+  win.loadURL(winURL).then();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
