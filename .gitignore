@@ -5,6 +5,10 @@
 /out-tsc
 /release
 
+# ts
+/scripts/**/*.js
+/scripts/**/*.js.map
+
 # dependencies
 /node_modules
 

@@ -27,6 +27,7 @@
       "rules": {
         "max-len": [ "error", { "code": 140 } ],
         "no-console": "warn",
+        "no-empty": "off",
         "no-else-return": "error",
         "no-lonely-if": "error",
         "no-return-await": "error",
@@ -48,7 +49,7 @@
         "sonarjs/prefer-immediate-return": "off",
         "sonarjs/cognitive-complexity": "off",
         "sonarjs/no-duplicate-string": "off",
-        "@typescript-eslint/no-empty-function": 0,
+        "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-explicit-any": 0,
         "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/no-unsafe-call": 0,

@@ -1,20 +1,23 @@
-'use strict'
+'use strict';
 
-process.env.BABEL_ENV = 'main'
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.BABEL_ENV = 'main';
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-const path = require('path')
+import { Configuration } from "webpack";
+import { resolve } from 'path';
 
-let mainConfig = {
-  mode: process.env.NODE_ENV,
+type MODE_TYPE = "development" | "production" | "none";
+
+const mainConfig: Configuration = {
+  mode: process.env.NODE_ENV as MODE_TYPE,
   target: 'electron-main',
   devtool: 'source-map',
   entry: {
-    main: path.join(__dirname, '../../src/electron-main/main.ts')
+    main: resolve(__dirname, '../../src/electron-main/main.ts')
   },
   output: {
     filename: '[name].js',// 生成的filename需要与package.json中的main一致
-    path: path.resolve(__dirname, '../../dist/electron-main'),
+    path: resolve(__dirname, '../../dist/electron-main'),
     libraryTarget: 'commonjs',
   },
   module: {
@@ -26,7 +29,7 @@ let mainConfig = {
             loader: 'ts-loader',
             options: {
               // 指定特定的ts编译配置，为了区分脚本的ts配置
-              configFile: path.resolve(__dirname, '../../tsconfig.main.json'),
+              configFile: resolve(__dirname, '../../tsconfig.main.json'),
             },
           },
         ],
@@ -38,10 +41,9 @@ let mainConfig = {
   resolve: {
     extensions: ['.ts', '.json', '.js']
   },
-}
+};
 
 if (process.env.NODE_ENV !== 'production') { }
-
 if (process.env.NODE_ENV === 'production') { }
 
-module.exports = mainConfig
+export default mainConfig;
