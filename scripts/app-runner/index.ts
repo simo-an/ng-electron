@@ -1,9 +1,8 @@
-'use strict';
 import * as path from 'path';
-import { spawn } from 'child_process';
 import * as webpack from 'webpack';
-import NgCli from "@angular/cli";
 import * as WaitOn from "wait-on";
+import NgCli from "@angular/cli";
+import { spawn } from 'child_process';
 import { greeting, logStats, rendererLog, mainLog, electronLog, runnerLog } from './logger';
 // const WebpackDevServer = require('webpack-dev-server')
 // const webpackHotMiddleware = require('webpack-hot-middleware')

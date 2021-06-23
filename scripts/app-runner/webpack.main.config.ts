@@ -1,10 +1,9 @@
-'use strict';
-
 process.env.BABEL_ENV = 'main';
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 import { Configuration } from "webpack";
 import { resolve } from 'path';
+const { dependencies } = require('../../package.json');
 
 type MODE_TYPE = "development" | "production" | "none";
 
@@ -19,6 +18,11 @@ const mainConfig: Configuration = {
     filename: '[name].js',// 生成的filename需要与package.json中的main一致
     path: resolve(__dirname, '../../dist/electron-main'),
     libraryTarget: 'commonjs',
+  },
+  externals: [ ...dependencies ],
+  node: {
+    __dirname: process.env.NODE_ENV !== 'production',
+    __filename: process.env.NODE_ENV !== 'production'
   },
   module: {
     rules: [
