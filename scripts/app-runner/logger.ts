@@ -1,4 +1,3 @@
-/* eslint-disable no-console,@typescript-eslint/explicit-module-boundary-types */
 import * as chalk from 'chalk';
 import { say } from 'cfonts';
 
@@ -30,7 +29,6 @@ function printLog(target: string, data: any, color: string): void {
 
   if (/[0-9A-z]+/.test(log)) {
     console.log(
-      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       chalk[color].bold(`\n┏ ${target} -------------------`) +
       '\n\n' +
       log +
@@ -44,8 +42,8 @@ function greeting(): void {
   const cols = process.stdout.columns;
   let text = '';
 
-  if (cols > 104) text = 'electron-ng';
-  else if (cols > 76) text = 'electron-|ng';
+  if (cols > 104) {text = 'electron-ng';}
+  else if (cols > 76) {text = 'electron-|ng';}
 
   if (text) {
     say(text, {
@@ -53,8 +51,9 @@ function greeting(): void {
       font: 'simple3d',
       space: false
     });
-  } else console.log(chalk.yellow.bold('\n  electron-ng'));
-  console.log(chalk.blue('Hello NgElectron ...') + '\n');
+  } else {
+    console.log(chalk.yellow.bold('\n  electron-ng'));
+  }
 }
 
 function mainLog(data: any, color: string): void { printLog('Main', data, color); }

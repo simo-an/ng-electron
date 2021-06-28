@@ -12,26 +12,25 @@
         "@schematics/angular:component": { "style": "less" },
         "@schematics/angular:application": { "strict": true }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "src/renderer",
+      "sourceRoot": "src/",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/electron-renderer",
-            "index": "src/electron-renderer/index.html",
-            "main": "src/electron-renderer/main.ts",
-            "polyfills": "src/electron-renderer/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/renderer",
+            "index": "src/renderer/index.html",
+            "main": "src/renderer/main.ts",
+            "polyfills": "src/renderer/polyfills.ts",
+            "tsConfig": "src/tsconfig.renderer.json",
             "inlineStyleLanguage": "less",
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/electron-renderer/assets"
+              "src/shared/assets",
+              "src/renderer/assets"
             ],
             "styles": [
-              "src/electron-renderer/styles.less"
+              "src/renderer/styles.less"
             ],
             "scripts": []
           },
@@ -51,8 +50,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/renderer/environments/environment.ts",
+                  "with": "src/renderer/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -84,5 +83,5 @@
       }
     }
   },
-  "defaultProject": "electron-ng"
+  "defaultProject": "ng-electron"
 }

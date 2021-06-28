@@ -1,11 +1,9 @@
 import * as path from 'path';
 import * as webpack from 'webpack';
-import * as WaitOn from "wait-on";
-import NgCli from "@angular/cli";
+import * as WaitOn from 'wait-on';
+import NgCli from '@angular/cli';
 import { spawn } from 'child_process';
 import { greeting, logStats, rendererLog, mainLog, electronLog, runnerLog } from './logger';
-// const WebpackDevServer = require('webpack-dev-server')
-// const webpackHotMiddleware = require('webpack-hot-middleware')
 
 import mainConfig from './webpack.main.config';
 
@@ -40,7 +38,7 @@ function startMain(): Promise<void> {
 
       logStats('Main', stats);
 
-      if (!electronProcess || electronProcess.kill) return resolve();
+      if (!electronProcess || electronProcess.kill) {return resolve();}
 
       manualRestart = true;
       process.kill(electronProcess.pid);
@@ -55,7 +53,7 @@ function startMain(): Promise<void> {
 function startElectron(): void {
   const args = [
     '--inspect=5858',
-    path.join(__dirname, '../../dist/electron-main/main.js')
+    path.join(__dirname, '../../dist/main/main.js')
   ];
 
   if (process.env.npm_execpath.endsWith('yarn.js')) {
@@ -72,7 +70,7 @@ function startElectron(): void {
   electronProcess.stderr.on('data', data => electronLog(data, 'red'));
 
   electronProcess.on('close', () => {
-    if (!manualRestart) process.exit();
+    if (!manualRestart) {process.exit();}
   });
 }
 

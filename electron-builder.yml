@@ -16,38 +16,23 @@ compression: normal
 asar: false
 
 mac:
-  icon: ./src/assets/icons
+  icon: ./src/shared/assets/icons
   category: public.app-category.productivity
   darkModeSupport: true
   target:
     - {target: dmg}
 
 dmg:
-  icon: ./src/assets/icons
+  icon: ./src/shared/assets/icons
   iconSize: 128
   contents:
     - {x: 380, y: 240, type: link, path: /Applications}
     - {x: 122, y: 240, type: file}
 
 linux:
-  icon: ./src/assets/icons/favicon.png
-  category: Office
-  packageCategory: Office
-  desktop:
-    StartupWMClass: ng-electron
-  executableArgs:
-    - '--js-flags="--max-old-space-size=12288"'
-
-snap:
-  confinement: strict
-  stagePackages:
-    - default
-  plugs:
-    - default
-    - password-manager-service
-  environment:
-    DISABLE_WAYLAND: 1
-    HUNSPELL_DICTIONARIES: $SNAP/usr/share/hunspell
+  icon: ./src/shared/assets/icons/favicon.png
+  target:
+    - {target: AppImage}
 
 win:
   artifactName: ${name}-${version}-windows-${arch}.${ext}
