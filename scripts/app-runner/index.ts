@@ -38,7 +38,7 @@ function startMain(): Promise<void> {
 
       logStats('Main', stats);
 
-      if (!electronProcess || electronProcess.kill) {return resolve();}
+      if (!electronProcess || electronProcess.kill) { return resolve(); }
 
       manualRestart = true;
       process.kill(electronProcess.pid);
@@ -70,7 +70,7 @@ function startElectron(): void {
   electronProcess.stderr.on('data', data => electronLog(data, 'red'));
 
   electronProcess.on('close', () => {
-    if (!manualRestart) {process.exit();}
+    if (!manualRestart) { process.exit(); }
   });
 }
 

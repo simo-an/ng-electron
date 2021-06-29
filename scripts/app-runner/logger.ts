@@ -42,8 +42,8 @@ function greeting(): void {
   const cols = process.stdout.columns;
   let text = '';
 
-  if (cols > 104) {text = 'electron-ng';}
-  else if (cols > 76) {text = 'electron-|ng';}
+  if (cols > 104) {text = 'ng-electron';}
+  else if (cols > 76) {text = 'ng-|electron';}
 
   if (text) {
     say(text, {
@@ -52,7 +52,7 @@ function greeting(): void {
       space: false
     });
   } else {
-    console.log(chalk.yellow.bold('\n  electron-ng'));
+    console.log(chalk.yellow.bold('\n  ng-electron'));
   }
 }
 
