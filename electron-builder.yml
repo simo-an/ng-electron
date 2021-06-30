@@ -36,7 +36,7 @@ linux:
 
 win:
   artifactName: ${name}-${version}-windows-${arch}.${ext}
-  icon: ./src/assets/icons/favicon.ico
+  icon: ./src/shared/assets/icons/favicon.ico
   target:
     - {target: nsis}
 
